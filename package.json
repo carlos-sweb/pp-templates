@@ -9,5 +9,12 @@
     "pp-model.js": "^1.2.7",
     "pp-router.js": "^2.1.8",
     "pp-validate": "^1.0.1"
-  }
+  },
+  "name": "pp-templates",
+  "version": "1.0.0",
+  "description": "pp-templates css-framework",
+  "main": "index.html",
+  "repository": "https://github.com/carlos-sweb/pp-templates.git",
+  "author": "carlos-sweb <c4rl0sill3sc4@gmail.com>",
+  "license": "MIT"
 }
