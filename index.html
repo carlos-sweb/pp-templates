@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>ppTemplates</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+	<link rel="stylesheet" href="/node_modules/normalize.css/normalize.css">
+	<link rel="stylesheet" href="/node_modules/highlight.js/lib/core.js">
+	<link rel="stylesheet" href="/node_modules/highlight.js/styles/atom-one-dark-reasonable.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="pp-css/dist/master.css">
+
+<style>
+
+
+*{
+  font-family: "JetBrains Mono", serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+
+pre{
+	box-shadow:
+		0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+		0px 2px 2px 0px rgba(0, 0, 0,0.14),
+		0px 1px 5px 0px rgba(0, 0, 0, 0.12)
+}
+.container{
+	margin-left:10px;
+	max-width:300px;
+}
+
+</style>	
+</head>
+<body>
+
+<div class="p-3">
+	<h1 class="ml-5 text-blue700">ppTemplates -> Css Framework</h1>
+</div>
+<div class="flex flex-row" >
+	<div id="menu" class="flex flex-col" style="width:250px;" ></div>
+	<div id="root" class="flex flex-col pl-4 pr-10 flex-grow"></div>
+</div>
+
+	
+
+
+
+
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
+
+
+
+<script src="/node_modules/pp-is/dist/pp-is.min.js" ></script>
+<script src="/node_modules/pp-router.js/pp-router.min.js"></script>
+<script src="/node_modules/pp-events/dist/pp-events.min.js"></script>
+<script src="/node_modules/pp-validate/pp-validate.min.js"></script>
+<script src="/node_modules/pp-model.js/pp-model.min.js"></script>
+
+
+<script>
+
+const menu = {
+	"element":["block","box","button","content","delete","icons","image","tag","title"],
+	"components":["card","dropdown","menu","message","modal","navbar","pagination"],
+	"form":["general","input","textarea","select","checkbox","radio","file"],
+	"layout":["container","hero","section","level","media-object","footer"]
+};
+
+let menuText = "";
+for( category in menu ){	
+	menuText += `<div class="flex p-3 mt-2 ml-5 bluegray50 text-bluegray700 rounded capitalize" >${category}</div>`
+	for( var i = 0 ; i < menu[category].length ; i++ ){
+		menuText += `<div data-link="${category}/${menu[category].at(i)}" class="flex p-3 mt-2 ml-10 gray300 hover:gray400 hover:text-bluegray500 text-bluegray700 rounded hover:cursor-pointer capitalize" >${menu[category].at(i)}</div>`
+	}	
+}
+
+var menuTag = document.getElementById("menu");
+
+menuTag.innerHTML = menuText
+
+menuItems = Array.from(menuTag.querySelectorAll("[data-link]")); 
+
+menuItems.forEach((item)=>{
+	item.addEventListener("click",()=>{
+		const link = item.getAttribute("data-link");
+		location.href = "#/"+link;
+	})
+});
+
+
+console.log(  );
+
+
+
+
+	// Declare root html element
+var root = document.getElementById("root");
+
+// Declare router here
+var router = new ppRouter(
+    // How to use it ?
+    {
+    "/":{
+        controller:function(){
+            root.innerHTML = `<h1>Home</h1>`;
+        }
+    }
+    }
+);
+
+
+const options  = {
+	headers: {
+    		"Content-Type": "text/plain"
+  		}
+}
+
+const ajax = function( url , fn ){
+		fetch(url,options).then((response)=>{
+			return response.text()
+		}).then((response)=>{
+			fn(response)		
+		});
+}
+
+router.addRoute("/element/:name(string)",{
+	controller:function( params ){
+		const url = "/ajax/element/"+params.name+"/page.htm";
+		ajax(url, ( response )=>{				
+			var html = `<h2 class='capitalize' >&nbsp;${params.name}</h2>`
+			html += response;
+			root.innerHTML = html;
+			hljs.highlightAll();			
+		})
+		
+	}
+});
+
+router.addRoute("/components/:name(string)",{
+	controller:function( params ){
+		root.innerHTML = `<h1>Components -> ${params.name}</h1>`;
+	}
+});
+
+router.addRoute("/form/:name(string)",{
+	controller:function( params ){
+		root.innerHTML = `<h1>Form -> ${params.name}</h1>`;
+	}
+});
+router.addRoute("/layout/:name(string)",{
+	controller:function( params ){
+		root.innerHTML = `<h1>Form -> ${params.name}</h1>`;
+	}
+});
+
+
+// If you want to default redirect
+router.redirect("/");
+
+// If you want to default Function for noFound state
+
+router.noFound = function( location ){
+    // Put you code here
+}
+
+//getting enjoy you router
+router.start();
+// if you want
+//router.start("/my-url-base");
+</script>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "highlight.js": "^11.10.0",
+    "lucide": "^0.460.0",
+    "lucide-static": "^0.460.0",
+    "normalize.css": "^8.0.1",
+    "pp-events": "^1.2.6",
+    "pp-is": "^1.2.3",
+    "pp-model.js": "^1.2.7",
+    "pp-router.js": "^2.1.8",
+    "pp-validate": "^1.0.1"
+  }
+}
