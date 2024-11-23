@@ -4,7 +4,7 @@
 	<title>ppTemplates</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+	<link rel="stylesheet" href="/node_modules/animate.css/animate.min.css">
 	<link rel="stylesheet" href="/node_modules/normalize.css/normalize.css">
 	<link rel="stylesheet" href="/node_modules/highlight.js/lib/core.js">
 	<link rel="stylesheet" href="/node_modules/highlight.js/styles/atom-one-dark-reasonable.min.css">
@@ -22,30 +22,21 @@
   font-weight: <weight>;
   font-style: normal;
 }
-
-
-
 </style>	
 </head>
 <body>
 
-<div class="p-3">
-	<h1 class="ml-5 text-blue700">ppTemplates -> Css Framework</h1>
-</div>
-<div class="flex flex-row" >
-	<div id="menu" class="flex flex-col" style="width:250px;" ></div>
-	<div id="root" class="flex flex-col pl-4 pr-10 flex-grow"></div>
+<div style="display:grid;grid-template-columns:repeat(24, 1fr);">
+	<div style="grid-area:1 / 1 / 1 / 6; " id="menu" class="p-1 " ></div>
+	<div id="root" style="grid-area:1 / 6 / 1 / -1;" class="p-3"></div>
 </div>
 
-	
 <script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
-
 <script src="/node_modules/pp-is/dist/pp-is.min.js" ></script>
 <script src="/node_modules/pp-router.js/pp-router.min.js"></script>
 <script src="/node_modules/pp-events/dist/pp-events.min.js"></script>
 <script src="/node_modules/pp-validate/pp-validate.min.js"></script>
 <script src="/node_modules/pp-model.js/pp-model.min.js"></script>
-
 
 <script>
 
@@ -57,10 +48,15 @@ const menu = {
 };
 
 let menuText = "";
+
+let stringClass1 = "flex p-3 gray100 text-bluegray900 capitalize border-solid border border-gray300 rounded cursor-pointer hover:gray200 mt-1";
+
+let stringClass2 = "flex p-3 gray100 text-bluegray900 capitalize border-solid border border-gray300 rounded cursor-pointer hover:gray200 mt-1";
+
 for( category in menu ){	
-	menuText += `<div class="flex p-3 mt-2 ml-5 bluegray50 text-bluegray700 rounded capitalize" >${category}</div>`
+	menuText += `<div class="${stringClass1}" >${category}</div>`
 	for( var i = 0 ; i < menu[category].length ; i++ ){
-		menuText += `<div data-link="${category}/${menu[category].at(i)}" class="flex p-3 mt-2 ml-10 gray300 hover:gray400 hover:text-bluegray500 text-bluegray700 rounded hover:cursor-pointer capitalize" >${menu[category].at(i)}</div>`
+		menuText += `<div data-link="${category}/${menu[category].at(i)}" class="${stringClass2}" >${menu[category].at(i)}</div>`
 	}	
 }
 
@@ -76,11 +72,6 @@ menuItems.forEach((item)=>{
 		location.href = "#/"+link;
 	})
 });
-
-
-console.log(  );
-
-
 
 
 	// Declare root html element
@@ -115,12 +106,22 @@ const ajax = function( url , fn ){
 
 router.addRoute("/element/:name(string)",{
 	controller:function( params ){
+		
 		const url = "/ajax/element/"+params.name+"/page.htm";
+
+		root.innerHTML = `<div class="flex flex-col red500 w-full" style="height:100vh;" ><span>Load....</span></div>`;
 		ajax(url, ( response )=>{				
 			var html = `<h2 class='capitalize' >&nbsp;${params.name}</h2>`
-			html += response;
-			root.innerHTML = html;
-			hljs.highlightAll();			
+			html += response;			
+
+			setTimeout(()=>{
+				root.innerHTML = html;
+				hljs.highlightAll();
+				root.classList.remove("hidden");
+				root.classList.add("animate__animated","animate__fadeIn");
+			},2000);
+			
+
 		})
 		
 	}

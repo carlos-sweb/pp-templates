@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "animate.css": "^4.1.1",
     "highlight.js": "^11.10.0",
     "lucide": "^0.460.0",
     "lucide-static": "^0.460.0",
