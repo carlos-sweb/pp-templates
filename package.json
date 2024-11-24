@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "@fontsource-variable/jetbrains-mono": "^5.1.1",
+    "@fontsource-variable/outfit": "^5.1.0",
+    "@fontsource/noto-serif-ahom": "^5.1.0",
+    "@fontsource/ubuntu": "^5.1.0",
+    "@fontsource/ubuntu-condensed": "^5.1.0",
+    "@fontsource/ubuntu-mono": "^5.1.0",
     "animate.css": "^4.1.1",
     "highlight.js": "^11.10.0",
     "lucide": "^0.460.0",
