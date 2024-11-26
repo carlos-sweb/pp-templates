@@ -1,4 +1,7 @@
 <div class="w-full">	
+	  <i data-lucide="volume-2" class="my-class"></i>
+  <i data-lucide="x"></i>
+  <i data-lucide="menu">aaaaaaaaaaaaaaa</i>
 	<pre class="flex flex-col flex-wrap">
 	<div class="language-tag gray900 text-gray200">HTML</div>		
 <code class="language-html rounded">					
@@ -7,12 +10,9 @@
 </code>	
 	</pre>
 </div>
-<br>
-<div>
 
-
-
-	<button class="
+<div class="w-full pt-3 pb-3">
+	<button class="	
 	gray50	
 	outline-none 
 	mb-1 
@@ -36,12 +36,13 @@
 	active:gray300
 
 	
-	" >Button A</button>
+	" >Normal</button>
 
-	<button class="
+		<button class="
+	lightblue200	
 	outline-none 
 	mb-1 
-	border-green400 
+	border-lightblue300 
 	border 
 	border-solid
 	pb-2 
@@ -53,22 +54,100 @@
 	rounded 
 	font-ligh 
 	cursor-pointer
-	green500
 
-	focus:border-gray500 	
-	hover:border-gray500 
+	focus:border-lightblue400  	
+	hover:border-lightblue400
 
-	active:border-gray500 
-	active:gray300
+	active:border-lightblue500
+	active:lightblue400
+
+	
+	" >Info</button>
+
+	<button class="
+	green600	
+	outline-none 
+	mb-1 
+	border-green700
+	border 
+	border-solid
+	pb-2 
+	pt-2 
+	pl-4 
+	pr-4 
+	text-center 
+	text-gray900 
+	rounded 
+	font-ligh 
+	cursor-pointer
+
+	focus:border-lightblue400	
+	hover:border-lightblue400
+
+	active:border-lightblue500
+	active:lightblue400
 
 	
 	" >Success</button>
 
+	<button class="
+	yellow800	
+	outline-none 
+	mb-1 
+	border-yellow700
+	border 
+	border-solid
+	pb-2 
+	pt-2 
+	pl-4 
+	pr-4 
+	text-center 
+	text-bluegray900 
+	rounded 
+	font-ligh 
+	cursor-pointer
+
+	focus:border-lightblue400  	
+	hover:border-lightblue400
+
+	active:border-lightblue500
+	active:lightblue400
+
+	
+	" >Warning</button>
+
+	<button class="
+	red200	
+	outline-none 
+	mb-1 
+	border-red300 
+	border 
+	border-solid
+	pb-2 
+	pt-2 
+	pl-4 
+	pr-4 
+	text-center 
+	text-bluegray900 
+	rounded 
+	font-ligh 
+	cursor-pointer
+
+	focus:red300  	
+	focus:border-red400
+
+	hover:red300  	
+	hover:border-red400
+
+	active:border-red500
+	active:red400
+
+	
+	" >Danger</button>
 
 </div>
 
 
-<h3	>Aqui hay que definir una base de css para un boton , sin colores determinados solo aspecto en general i luego con una clase segundaria dar el aspecto para no pisar propiedades como la color text o background color</h3	>
 <style>
 	pre {
             position: relative;
@@ -90,18 +169,11 @@
 	<pre class="flex flex-col flex-wrap">
 	<div class="language-tag gray900 text-gray200">HTML</div>		
 <code class="language-html rounded">					
-&lt;!-- From pp-cms--&gt;
-&lt;button class="btn" &gt;Button&lt;/button&gt;
-&lt;!-- From tailwind or similar--&gt;
-&lt;button class="outline-none mb-1 border-green400 border border-solid pb-2 
-pt-2 pl-4 pr-4 text-center text-bluegray900 rounded font-ligh cursor-pointer 
-green500 focus:border-gray500 hover:border-gray500 
-active:border-gray500 active:gray300" &gt;Button&lt;/button&gt;
-
-
-&lt;button class="btn" &gt;Success&lt;/button&gt;
-&lt;button class="btn" &gt;Click Me&lt;/button&gt;
-&lt;button class="btn" &gt;Click Me&lt;/button&gt;
+&lt;button class="btn" &gt;Normal&lt;/button&gt;
+&lt;button class="btn-info" &gt;Info&lt;/button&gt;
+&lt;button class="btn-success" &gt;Success&lt;/button&gt;
+&lt;button class="btn-warning" &gt;Warning&lt;/button&gt;
+&lt;button class="btn-danger" &gt;Danger&lt;/button&gt;
 </code>	
 	</pre>
 </div>

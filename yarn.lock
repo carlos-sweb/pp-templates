@@ -42,15 +42,15 @@ highlight.js@^11.10.0:
   resolved "https://registry.npmjs.org/highlight.js/-/highlight.js-11.10.0.tgz"
   integrity sha512-SYVnVFswQER+zu1laSya563s+F8VDGt7o35d4utbamowvUNLLMovFqwCLSocpZTz3MgaSRA1IbqRWZv97dtErQ==
 
-lucide-static@^0.460.0:
-  version "0.460.0"
-  resolved "https://registry.npmjs.org/lucide-static/-/lucide-static-0.460.0.tgz"
-  integrity sha512-X6pIdg7jVxv7YQ/uR241hwhNiztcAfmj181TbcX7HCxxk/3mGaRtAc6b2ftUvQBufbJE6ehgyzO2uVsa604tWg==
+lucide-static@^0.461.0:
+  version "0.461.0"
+  resolved "https://registry.yarnpkg.com/lucide-static/-/lucide-static-0.461.0.tgz#989c916884a6f3cff19395ce7708d5ca82526297"
+  integrity sha512-T5/tzHWAuYyC1XUr7W+qbKpTAhOBo5pIzooDodj56qkK1dGcU1fDgt9e7BJiERGAMWfRIctiYjEp5NPtS7SNTg==
 
-lucide@^0.460.0:
-  version "0.460.0"
-  resolved "https://registry.npmjs.org/lucide/-/lucide-0.460.0.tgz"
-  integrity sha512-kEqx3yHU+q4S0k7RH183QFaDy6xepEcN3yVjiBhxM1qX/tSMrmOSuUQJCobiIYzB1q9m8RmAN0efPiXZq79JSQ==
+lucide@^0.461.0:
+  version "0.461.0"
+  resolved "https://registry.yarnpkg.com/lucide/-/lucide-0.461.0.tgz#e4b865a0a89237616b1884751b10eea0e431829e"
+  integrity sha512-Slls2guZ/2iRn+/he7wBSQMI6RYz34sVIthFNtIKD8P7mI8WTtwJG9pLh1i6z7k//ZL9JtFwWC0WlB4b76AH1A==
 
 normalize.css@^8.0.1:
   version "8.0.1"

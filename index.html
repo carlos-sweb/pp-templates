@@ -19,22 +19,33 @@
 	<link rel="stylesheet" href="/node_modules/highlight.js/styles/atom-one-dark-reasonable.min.css">
 	<link rel="stylesheet" href="pp-css/dist/master.css">
 
+
+
+	<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pp-drawer.js@1.0.6/pp-drawer.min.css">-->
+
 	<style>
+	*{
+		user-select: none;
+		-ms-user-select: none;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+	}	
 	body{
-		/* font-family: 'Ubuntu Mono', sans-serif;*/
+		font-family: 'Ubuntu Mono', sans-serif;
 	  /* font-family: 'Noto Serif Ahom', serif;	  */
 	  /* font-family: 'Outfit Variable', sans-serif; */
-	  font-family: "JetBrains Mono Variable", serif;	  	  
+	  /* font-family: "JetBrains Mono Variable", serif;	  	  */
 	}
 	</style>	
 </head>
 <body>
 
 <div style="display:grid;grid-template-columns:repeat(24, 1fr);">
-	<div style="grid-area:1 / 1 / 1 / 6; " id="menu" class="p-1 " ></div>
-	<div id="root" style="grid-area:1 / 6 / 1 / -1;" class="p-3"></div>
+	<div style="grid-area:1 / 1 / 1 / 7; " id="menu" class="p-2 gray300 border-right-solid border border-right-bluegray100" ></div>
+	<div id="root" style="grid-area:1 / 7 / 1 / -1;" class="p-3"></div>
 </div>
 
+<script src="/node_modules/lucide/dist/umd/lucide.min.js" ></script>
 <script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
 <script src="/node_modules/pp-is/dist/pp-is.min.js" ></script>
 <script src="/node_modules/pp-router.js/pp-router.min.js"></script>
@@ -51,17 +62,38 @@ const menu = {
 	"layout":["container","hero","section","level","media-object","footer"]
 };
 
-let menuText = "";
+let menuText = `
 
-let stringClass1 = "flex p-3 gray100 text-bluegray900 capitalize border-solid border border-gray300 rounded cursor-pointer hover:gray200 mt-1";
+<!--<div>
+<button onclick="drawer.open()" >Open Drawer</button>
+<br>
+<br>
+</div>-->
+  <i data-lucide="volume-2" class="text-red500"></i>
+  <i data-lucide="x"></i>
+  <i data-lucide="menu"></i>
 
-let stringClass2 = "flex p-3 gray100 text-bluegray900 capitalize border-solid border border-gray300 rounded cursor-pointer hover:gray200 mt-1";
 
-for( category in menu ){	
+<div class="w-full flex ">
+<input placeholder="Search" autocomplete="off" name="username" class="w-full outline-none appearance-none rounded border-solid border-gray400 border border-solid h-7 pt-1 pb-1 pl-2 pr-2 focus:border focus:border-deeppurple400 focus:shadow-around-deeppurple300 text-bluegray900 transition-duration-200 transition-property-all transition-timing-ease" type="text"  ></div>`
+
+let stringClass1 = "flex p-4 gray300 font-bold text-deeppurple900 capitalize cursor-normal";
+
+let stringClass2 = "flex p-3 text-bluegray900 capitalize cursor-pointer";
+
+for( category in menu ){		
 	menuText += `<div class="${stringClass1}" >${category}</div>`
-	for( var i = 0 ; i < menu[category].length ; i++ ){
-		menuText += `<div data-link="${category}/${menu[category].at(i)}" class="${stringClass2}" >${menu[category].at(i)}</div>`
-	}	
+	menuText +=	`<div class='gray100 mb-4 shadow rounded-xl' >`;
+	menuLength = menu[category].length;
+	for( var i = 0 ; i < menuLength ; i++ ){	
+		let tempStringClass2 = stringClass2;
+		if( i <= (menuLength-1)  ){ 
+			tempStringClass2 += " border border-bottom-solid border-bottom-gray300"
+		}
+
+		menuText += `<div data-link="${category}/${menu[category].at(i)}" class="${tempStringClass2}" >&nbsp;${menu[category].at(i)}</div>`
+	}
+	menuText +=	`</div>`;
 }
 
 var menuTag = document.getElementById("menu");
@@ -73,6 +105,7 @@ menuItems = Array.from(menuTag.querySelectorAll("[data-link]"));
 menuItems.forEach((item)=>{
 	item.addEventListener("click",()=>{
 		const link = item.getAttribute("data-link");
+		root.classList.add("hidden");
 		location.href = "#/"+link;
 	})
 });
@@ -111,11 +144,10 @@ const ajax = function( url , fn ){
 router.addRoute("/element/:name(string)",{
 	controller:function( params ){
 		
-		const url = "/ajax/element/"+params.name+"/page.htm";
-
-		root.innerHTML = `<div class="flex flex-col red500 w-full" style="height:100vh;" ><span>Load....</span></div>`;
+		const url = "/ajax/element/"+params.name+"/page.htm";		
+		root.innerHTML = `<div class="flex flex-colw-full"><span>Load....</span></div>`;
 		ajax(url, ( response )=>{				
-			var html = `<h2 class='capitalize' >&nbsp;${params.name}</h2>`
+			var html = `<h2 class='capitalize text-deeppurple900' >&nbsp;${params.name}</h2>`
 			html += response;			
 
 			setTimeout(()=>{
@@ -123,7 +155,7 @@ router.addRoute("/element/:name(string)",{
 				hljs.highlightAll();
 				root.classList.remove("hidden");
 				root.classList.add("animate__animated","animate__fadeIn");
-			},2000);
+			},0);
 			
 
 		})
@@ -160,9 +192,19 @@ router.noFound = function( location ){
 
 //getting enjoy you router
 router.start();
-// if you want
-//router.start("/my-url-base");
+	// if you want
+	//router.start("/my-url-base");
+	lucide.createIcons();	
 </script>
+
+
+<!--<div drawer-id="main" class="pp-drawer hidden_drawer drawer-shadow"><h1>hola</h1></div>
+<div drawer-id="main" class="pp-drawer-scrim hidden"></div>-->
+
+<!--<script src="https://cdn.jsdelivr.net/npm/pp-drawer.js@1.0.6/pp-drawer.min.js" ></script>
+<script>
+	var drawer = new ppDrawer("main")
+</script>-->
 
 </body>
 </html>
