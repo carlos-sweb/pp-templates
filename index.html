@@ -20,7 +20,23 @@
 	<link rel="stylesheet" href="pp-css/dist/master.css">
 
 
-
+<style>
+	pre {
+            position: relative;
+            padding: 0px;                       
+            margin: 0px;
+        }
+        
+        .language-tag {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 6px 10px;
+            font-size: 14px;                        
+            border-radius: 0 6px 0 6px;
+            font-weight:bold;
+        }
+</style>
 	<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pp-drawer.js@1.0.6/pp-drawer.min.css">-->
 
 	<style>
@@ -196,6 +212,15 @@ router.start();
 	// if you want
 	//router.start("/my-url-base");
 	lucide.createIcons();	
+
+
+function copy( event ){
+	const text = event.currentTarget.parentElement.nextElementSibling.
+		innerText;
+	navigator.clipboard.writeText( text );
+}
+
+
 </script>
 
 

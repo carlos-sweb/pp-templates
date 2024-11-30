@@ -9,222 +9,86 @@
 	</pre>
 </div>
 
-
-
-
-
 <div class="w-full pt-3 pb-3">
-
-	<p class="w-full flex justify-center">
-	<span class="w-full ">.btn-normal</span> 
-		<button class="border-none gray50 p-1 rounded-md cursor-pointer flex flex-col justify-center">
-			<i data-lucide="copy" class="text-bluegray600" ></i>
-		</button>
-		
+	<p class="w-full flex justify-center"><span class="w-full ">.btn-normal</span><button onclick="copy(event)" data-copy="btn-normal" class="border-none gray50 p-1 rounded-md cursor-pointer flex flex-col justify-center"><i data-lucide="copy" class="text-bluegray600" ></i></button>		
 	</p>
-	<p>
+	<p data-copyid="btn-normal" >
 	gray50 outline-none mb-1 border-gray400 border border-solid pb-2 pt-2 pl-4 pr-4 text-center text-bluegray900 rounded font-ligh cursor-pointer focus:border-gray500 focus:shadow-around-gray900 hover:border-gray500 active:border-gray500 active:gray300
-	</p>		
-
-	<button class="	
-	gray50	
-	outline-none 
-	mb-1 
-	border-gray400 
-	border 
-	border-solid
-	pb-2 
-	pt-2 
-	pl-4 
-	pr-4 
-	text-center 
-	text-bluegray900 
-	rounded 
-	font-ligh 
-	cursor-pointer
-
+	</p>
+	<p class="w-full flex justify-center"><span class="w-full ">.btn-normal-light</span><button onclick="copy(event)" class="border-none gray50 p-1 rounded-md cursor-pointer flex flex-col justify-center"><i data-lucide="copy" class="text-bluegray600" ></i></button>		
+	</p>
+	<p>gray300 outline-none mb-1 border-gray300 border border-solid pb-2 pt-2 pl-4 pr-4 text-center text-bluegray900 rounded font-ligh cursor-pointer focus:shadow-around-gray900 hover:border-gray400 active:gray400	
+	</p>
+	<div class="w-full flex flex-row flex-wrap justify-start" style="gap:15px 15px">
+	<button class="gray50 outline-none mb-1 border-gray400 border border-solid pb-2 
+	pt-2 pl-4 pr-4 text-center text-bluegray900 rounded font-ligh cursor-pointer
 	focus:border-gray500 	
 	focus:shadow-around-gray900
-
-
-	hover:border-gray500 
-
+	hover:border-gray500
 	active:border-gray500 
-	active:gray300
-
-	
-	
+	active:gray300	
+	">Normal</button>
+	<button class="	gray300 outline-none mb-1 border-gray300 border border-solid
+	pb-2 pt-2 pl-4 pr-4 text-center text-bluegray900 rounded font-ligh cursor-pointer
+	focus:shadow-around-gray900 hover:border-gray400 active:gray400	
 	" >Normal</button>
-	
+	</div>
+	<div class="w-full pt-3">	
+		<pre class="flex flex-col flex-wrap">
+		<div class="language-tag gray900 text-gray200">HTML</div>		
+<code class="language-html rounded">&lt;button class="btn-normal" &gt;Normal&lt;/button&gt;
+&lt;button class="btn-normal-light" &gt;button&lt;/button&gt;</code>	
+		</pre>
+	</div>	
+</div>
+<hr>
+<div class="w-full pt-3 pb-3">		
 	<p class="w-full flex justify-center">
-	<span class="w-full ">.btn-info</span> <i data-lucide="copy" class="cursor-pointer" ></i></p>
+	<span class="w-full ">.btn-info</span><button onclick="copy(event)" class="border-none gray50 p-1 rounded-md cursor-pointer flex flex-col justify-center"><i data-lucide="copy" class="text-bluegray600" ></i></button></p>
 	<p>lightblue300 outline-none mb-1 border-blue300 border border-solid pb-2 pt-2 pl-4 pr-4 text-center text-bluegray900 rounded font-ligh cursor-pointer focus:border-blue400 hover:border-blue400 active:border-blue400 active:lightblue400 focus:shadow-around-blue900
 	</p>
-
-		<button class="
-	lightblue300	
-	outline-none 
-	mb-1 
-	border-blue300
-	border 
-	border-solid
-	pb-2 
-	pt-2 
-	pl-4 
-	pr-4 
-	text-center 
-	text-bluegray900 
-	rounded 
-	font-ligh 
-	cursor-pointer
-
-	focus:border-blue400 	
-	hover:border-blue400 
-
-	active:border-blue400 
-	active:lightblue400
-
-	focus:shadow-around-blue900
-
-	
-	" >Info</button>
 	<p class="w-full flex justify-center">
-		<span class="w-full ">.btn-success</span> <i data-lucide="copy" class="cursor-pointer" ></i></p>
+	<span class="w-full ">.btn-info-light</span><button onclick="copy(event)" class="border-none gray50 p-1 rounded-md cursor-pointer flex flex-col justify-center"><i data-lucide="copy" class="text-bluegray600" ></i></button></p>
+	<p>blue100 outline-none mb-1 border-blue100 border border-solid pb-2 pt-2 pl-4 pr-4 text-center text-blue900 rounded font-ligh cursor-pointer focus:border-blue200 hover:border-blue200 active:border-blue200 active:lightblue200 focus:shadow-around-blue900
+	</p>
+	<button class="lightblue300 outline-none mb-1 border-blue300 border border-solid pb-2 pt-2 pl-4 pr-4 text-center text-bluegray900 rounded font-ligh cursor-pointer
+	focus:border-blue400 hover:border-blue400 active:border-blue400 active:lightblue400 focus:shadow-around-blue900" >Info</button>
+	<button class="blue100	outline-none mb-1 border-blue100 border border-solid
+	pb-2 pt-2 pl-4 pr-4 text-center text-blue900 rounded font-ligh cursor-pointer focus:border-blue200 hover:border-blue200 active:border-blue200 active:lightblue200 focus:shadow-around-blue900" >Info</button>
+	<p class="w-full flex justify-center">
+		<span class="w-full ">.btn-success</span><button onclick="copy(event)" class="border-none gray50 p-1 rounded-md cursor-pointer flex flex-col justify-center"><i data-lucide="copy" class="text-bluegray600" ></i></button></p>
 		<p>green500	outline-none mb-1 border-green600 border border-solid pb-2 pt-2 pl-4 pr-4 text-center text-bluegray900 rounded font-ligh cursor-pointer focus:border-green700 focus:shadow-around-green900 hover:green600 hover:border-green700 active:border-green700 active:green600
 		</p>
-	<button class="
-	green500	
-	outline-none 
-	mb-1 
-	border-green600
-	border 
-	border-solid
-	pb-2 
-	pt-2 
-	pl-4 
-	pr-4 
-	text-center 
-	text-bluegray900 
-	rounded 
-	font-ligh 
-	cursor-pointer
-
-	focus:border-green700
-	focus:shadow-around-green900
-	
-	hover:border-green700
-
-	active:border-green700
-	active:green600
-
-	
-
-	
-	" >Success</button>
+		<p class="w-full flex justify-center">
+		<span class="w-full ">.btn-success-light</span><button onclick="copy(event)" class="border-none gray50 p-1 rounded-md cursor-pointer flex flex-col justify-center"><i data-lucide="copy" class="text-bluegray600" ></i></button></p>
+		<p>green100	outline-none mb-1 border-green100 border border-solid pb-2 pt-2 pl-4 pr-4 text-center text-green900 rounded font-ligh cursor-pointer focus:border-green300 focus:shadow-around-green900 active:border-green300 active:green200
+		</p>
+	<button class="green500 outline-none mb-1 border-green600 border border-solid pb-2 pt-2 pl-4 pr-4 text-center text-bluegray900 rounded font-ligh cursor-pointer focus:border-green700 focus:shadow-around-green900 hover:border-green700 active:border-green700 active:green600" >Success</button>
+	<button class="green100	outline-none mb-1 border-green100 border border-solid pb-2 pt-2 pl-4 pr-4 text-center text-green900 rounded font-ligh cursor-pointer focus:border-green300 focus:shadow-around-green900 active:border-green300 active:green200" >Success</button>
 	<p class="w-full flex justify-center">
-		<span class="w-full ">.btn-warning</span> <i data-lucide="copy" class="cursor-pointer" ></i></p>
+		<span class="w-full ">.btn-warning</span><button onclick="copy(event)" class="border-none gray50 p-1 rounded-md cursor-pointer flex flex-col justify-center"><i data-lucide="copy" class="text-bluegray600" ></i></button></p>
 		<p>yellow600 outline-none mb-1 border-yellow700 border border-solid pb-2 pt-2 pl-4 pr-4 text-center text-bluegray900 rounded font-ligh cursor-pointer focus:border-yellow700 focus:shadow-around-yellow900 hover:border-yellow700 active:border-yellow800 active:yellow700
 		</p>
-	<button class="
-	yellow600	
-	outline-none 
-	mb-1 
-	border-yellow700
-	border 
-	border-solid
-	pb-2 
-	pt-2 
-	pl-4 
-	pr-4 
-	text-center 
-	text-bluegray900 
-	rounded 
-	font-ligh 
-	cursor-pointer
 
-	focus:border-yellow700
-	focus:shadow-around-yellow900
-
-	
-	hover:border-yellow700
-
-	active:border-yellow800
-	active:yellow700
-
-	
-	" >Warning</button>
 	<p class="w-full flex justify-center">
-		<span class="w-full ">.btn-danger</span> <i data-lucide="copy" class="cursor-pointer" ></i></p>
+		<span class="w-full ">.btn-warning-light</span><button onclick="copy(event)" class="border-none gray50 p-1 rounded-md cursor-pointer flex flex-col justify-center"><i data-lucide="copy" class="text-bluegray600" ></i></button></p>
+		<p>yellow100 outline-none mb-1 border-yellow100 border border-solid pb-2 pt-2 pl-4 pr-4 text-center text-yellow900 rounded font-ligh cursor-pointer focus:border-yellow400 focus:shadow-around-yellow900 hover:border-yellow400 active:border-yellow200 active:yellow200
+		</p>
+	<button class="yellow600 outline-none mb-1 border-yellow700 border border-solid pb-2 pt-2 pl-4 pr-4 text-center text-bluegray900 rounded font-ligh cursor-pointer focus:border-yellow700 focus:shadow-around-yellow900 hover:border-yellow700 active:border-yellow800 active:yellow700" >Warning</button>
+	<button class="yellow100 outline-none mb-1 border-yellow100 border border-solid pb-2 pt-2 pl-4 pr-4 text-center text-yellow900 rounded font-ligh cursor-pointer focus:border-yellow400 focus:shadow-around-yellow900 hover:border-yellow400 active:border-yellow200 active:yellow200" >Warning</button>
+	<p class="w-full flex justify-center">
+		<span class="w-full ">.btn-danger</span><button onclick="copy(event)" class="border-none gray50 p-1 rounded-md cursor-pointer flex flex-col justify-center"><i data-lucide="copy" class="text-bluegray600" ></i></button></p>
 		<p>red200 outline-none mb-1 border-red300 border border-solid pb-2 pt-2 pl-4 pr-4 text-center text-bluegray900 rounded font-ligh cursor-pointer focus:border-red300 focus:shadow-around-red900 hover:border-red400 active:border-red400 active:red300
 		</p>
-	<button class="
-	red200	
-	outline-none 
-	mb-1 
-	border-red300
-	border 
-	border-solid
-	pb-2 
-	pt-2 
-	pl-4 
-	pr-4 
-	text-center 
-	text-bluegray900 
-	rounded 
-	font-ligh 
-	cursor-pointer
-
-	focus:border-red300
-	focus:shadow-around-red900
-	
-	hover:border-red400
-
-	active:border-red400
-	active:red300
-	
-	"  >Danger</button>
-
-	
-	<!--<button class="
-	red100	
-	outline-none 
-	mb-1 
-	border-red50
-	border 
-	border-solid
-	pb-2 
-	pt-2 
-	pl-4 
-	pr-4 
-	text-center 
-	text-bluegray500 
-	rounded 
-	font-ligh 
-	cursor-not-allowed
-	
-
-	"  >Danger</button>-->
-
+	<p class="w-full flex justify-center">
+		<span class="w-full ">.btn-danger-light</span><button onclick="copy(event)" class="border-none gray50 p-1 rounded-md cursor-pointer flex flex-col justify-center"><i data-lucide="copy" class="text-bluegray600" ></i></button></p>
+		<p>red100 outline-none mb-1 border-red100 border border-solid pb-2 pt-2 pl-4 pr-4 text-center text-red900 rounded font-ligh cursor-pointer hover:red200 active:red300
+		</p>
+	<button class="red200 outline-none mb-1 border-red300 border border-solid pb-2 pt-2 pl-4 pr-4 text-center text-bluegray900 rounded font-ligh cursor-pointer focus:border-red300 focus:shadow-around-red900 hover:border-red400 active:border-red400 active:red300"  >Danger</button>
+	<button class="red100 outline-none mb-1 border-red100 border border-solid
+pb-2 pt-2 pl-4 pr-4 text-center text-red900 rounded font-ligh cursor-pointer hover:red200 active:red300">Danger</button>
 </div>
 
-
-<style>
-	pre {
-            position: relative;
-            padding: 0px;                       
-            margin: 0px;
-        }
-        
-        .language-tag {
-            position: absolute;
-            top: 0;
-            right: 0;
-            padding: 6px 10px;
-            font-size: 14px;                        
-            border-radius: 0 6px 0 6px;
-            font-weight:bold;
-        }
-</style>
 <div class="w-full">	
 	<pre class="flex flex-col flex-wrap">
 	<div class="language-tag gray900 text-gray200">HTML</div>		
