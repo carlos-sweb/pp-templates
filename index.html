@@ -161,10 +161,8 @@ router.addRoute("/element/:name(string)",{
 		
 		const url = "/ajax/element/"+params.name+"/page.htm";
 		root.innerHTML = `<div class="flex flex-colw-full"><span>Load....</span></div>`;
-		ajax(url, ( response )=>{				
-			var html = `<h2 class='capitalize text-deeppurple900' >&nbsp;${params.name}</h2>`
-			html += response;			
-
+		ajax(url, ( response )=>{							
+			const html = response;
 			setTimeout(()=>{
 				root.innerHTML = html;
 				hljs.highlightAll();
@@ -215,6 +213,13 @@ function copy( event ){
 	const text = event.currentTarget.parentElement.nextElementSibling.
 		innerText;
 	navigator.clipboard.writeText( text );
+}
+
+
+function changeStyles( event ){
+	const values = event.currentTarget.value;
+	console.log( values );
+	console.log("Change ..... Style");
 }
 
 

@@ -1,5 +1,6 @@
 <!--https://originui.com/buttons-->
 <!-- https://daisyui.com/components/button/ -->
+<p class="text-3xl font-bold text-deeppurple900">&nbsp;Button</p>	
 <div class="w-full">		  
 	<pre class="flex flex-col flex-wrap">
 	<div class="language-tag gray900 text-gray200">HTML</div>		
@@ -7,21 +8,25 @@
 </code>	
 	</pre>
 </div>
-
-<div class="w-full pt-3 pb-3">
-	<p class="w-full flex justify-center"><span class="w-full ">.btn-normal</span><button onclick="copy(event)" data-copy="btn-normal" class="border-none gray50 p-1 rounded-md cursor-pointer flex flex-col justify-center"><i data-lucide="copy" class="text-bluegray600" ></i></button>		
-	</p>
-	<p>
-	gray50 outline-none mb-1 border-gray400 border border-solid pb-2 pt-2 pl-4 pr-4 text-center text-bluegray900 rounded font-ligh cursor-pointer focus:border-gray500 focus:shadow-around-gray900 hover:border-gray500 active:border-gray500 active:gray300
-	</p>
-	<p class="w-full flex justify-center"><span class="w-full ">.btn-normal-light</span><button onclick="copy(event)" class="border-none gray50 p-1 rounded-md cursor-pointer flex flex-col justify-center"><i data-lucide="copy" class="text-bluegray600" ></i></button>		
-	</p>
-	<p>gray300 outline-none mb-1 border-gray300 border border-solid pb-2 pt-2 pl-4 pr-4 text-center text-bluegray900 rounded font-ligh cursor-pointer focus:shadow-around-gray900 hover:border-gray400 active:gray400	
-	</p>
-
+<div class="w-full pt-3 pb-3">	
+	<div class="w-full pt-3 pb-3">
+		<!--START SELECT TO STYLES-->
+		<select class="gray100 w-40 flex pl-3 pr-3 pt-2 pb-2 border border-solid border-gray300 rounded" onchange="changeStyles( event )" >
+			<option value="normal">Normal</option>
+			<option value="info">Info</option>
+			<option value="warning">Warning</option>
+			<option value="success">Success</option>
+			<option value="danger">Danger</option>
+		</select>
+		<!--END SELECT TO STYLES-->
+	</div>
+	<!---->
 	<div class="w-full flex flex-row flex-wrap justify-start gap-y-4">	
+		<div class="w-full border border-top-solid border-deeppurple300 h-0"></div>
+		<p class="text-2xl font-bold text-deeppurple900">&nbsp;Classic</p>		
 	<!--CLASSIC BUTTON -->	
-		<div class="w-full flex flex-row flex-wrap justify-start gap-3">
+		<div class="w-full "><p class="text-base font-bold text-green800">&nbsp;Simple&nbsp;</p></div>
+		<div class="w-full flex flex-row flex-wrap justify-start gap-3">			
 			<button class="gray50 outline-none mb-1 border-gray400 border border-solid pb-2 
 			pt-2 pl-4 pr-4 text-center text-bluegray900 rounded font-ligh cursor-pointer
 			focus:border-gray500 				
@@ -68,6 +73,7 @@
 		</div>
 		<!-- ELEVATED BUTTON -->
 		<div class="w-full flex flex-row flex-wrap justify-start gap-3">			
+			<div class="w-full "><p class="text-base font-bold text-green800">&nbsp;Elevated&nbsp;</p></div>
 			<button class="gray100 outline-none mb-1 border border-solid border-gray300  pb-2 
 			pt-2 pl-4 pr-4 text-center text-bluegray900 rounded font-ligh cursor-pointer
 			active:gray300 shadow-1
@@ -105,10 +111,11 @@
 			w-10 h-10
 			transition-duration-200 transition-property-all transition-timing-ease
 			"><i data-lucide="x" class="w-5" ></i></button>
-		</div>
+		</div>			
 		<!-- BUTTON DISABLED -->
 		<div class="w-full flex flex-row flex-wrap justify-start gap-3">
-
+			
+			<div class="w-full "><p class="text-base font-bold text-green800">&nbsp;Disabled&nbsp;</p></div>
 
 			<button class="gray300 outline-none mb-1 border-gray300 border border-solid pb-2 
 			pt-2 pl-4 pr-4 text-center text-gray500 rounded font-ligh cursor-not-allowed" disabled >Normal</button>
@@ -129,8 +136,11 @@
 			w-10 h-10
 			" disabled ><i data-lucide="x" class="w-5" ></i></button>
 		</div>
+		<div class="w-full border border-top-solid border-deeppurple300 h-0"></div>
+		<p class="text-2xl font-bold text-deeppurple900">&nbsp;Slim</p>
 		<!-- CLASSIC BUTTON SLIM -->
-		<div class="w-full flex flex-row flex-wrap justify-start gap-3">			
+		<div class="w-full flex flex-row flex-wrap justify-start gap-3">
+			<div class="w-full "><p class="text-base font-bold text-green800">&nbsp;Simple&nbsp;</p></div>
 			<button class="gray50 outline-none mb-1 border-gray400 border border-solid 
 			h-8 p-1
 			text-center text-bluegray900 rounded font-ligh cursor-pointer
@@ -178,7 +188,9 @@
 			"><i data-lucide="x" class="w-4" ></i></button>
 		</div>
 		<!-- ELEVATED BUTTON SLIM -->
-		<div class="w-full flex flex-row flex-wrap justify-start gap-3">		
+		<div class="w-full flex flex-row flex-wrap justify-start gap-3">
+
+			<div class="w-full "><p class="text-base font-bold text-green800">&nbsp;Elevated&nbsp;</p></div>		
 			<button class="gray100 outline-none mb-1 border-gray300 border border-solid 
 			h-8 p-1
 			text-center text-bluegray900 rounded font-ligh cursor-pointer 
@@ -224,8 +236,30 @@
 			w-8 h-8
 			transition-duration-200 transition-property-all transition-timing-ease	
 			"><i data-lucide="x" class="w-4" ></i></button>
-		</div>
+		</div>		
+		<!-- DISABLED BUTTON SLIM-->
+		<div class="w-full flex flex-row flex-wrap justify-start gap-3">
+			<div class="w-full "><p class="text-base font-bold text-green800">&nbsp;Disabled&nbsp;</p></div>
+			<button class="gray300 outline-none mb-1 border-gray300 border border-solid h-8 text-center text-gray500 rounded font-ligh cursor-not-allowed" disabled >&nbsp;Normal&nbsp;</button>
 
+			<button class="gray300 outline-none mb-1 border-gray300 border border-solid text-center text-gray500 rounded font-ligh cursor-not-allowed
+			flex flex-row flex-wrap justify-center items-center
+			" disabled>&nbsp;<i data-lucide="github" class="w-4" ></i>&nbsp;<span>Github</span>&nbsp;</button>
+
+			<button class="gray300 outline-none mb-1 border-gray300 border border-solid text-center text-gray500 rounded font-ligh cursor-not-allowed
+			flex flex-row flex-wrap justify-center items-center h-8
+			" disabled ><span>&nbsp;Github</span>&nbsp;<i data-lucide="arrow-right" class="w-4"></i></button>
+
+			<button class="
+			gray300 outline-none mb-1 border-gray300 border border-solid 
+			text-gray500 rounded font-ligh cursor-not-allowed			
+			flex flex-col flex-wrap justify-center	items-center
+			w-8 h-8
+			" disabled ><i data-lucide="x" class="w-5" ></i></button>
+		</div>
+		<!-- DISABLED BUTTON SLIM-->
+		<div class="w-full border border-top-solid border-deeppurple300 h-0"></div>
+		<p class="text-2xl font-bold text-deeppurple900">&nbsp;Rounded</p>
 		<div class="w-full flex flex-row flex-wrap justify-start gap-3">
 			<button class="gray50 outline-none mb-1 border-gray400 border border-solid pb-2 
 			pt-2 pl-4 pr-4 text-center text-bluegray900 rounded-full font-ligh cursor-pointer
@@ -266,8 +300,7 @@
 			flex flex-col flex-wrap justify-center	items-center
 			w-10 h-10
 			"><i data-lucide="x" class="w-5" ></i></button>
-		</div>
-
+		</div>		
 	<div class="w-full flex flex-row flex-wrap justify-start gap-3">
 			<button class="gray50 outline-none mb-1 border-gray400 border border-solid 
 			h-8 p-1
@@ -313,6 +346,14 @@
 		</div>	
 	</div>
 
+
+
+
+
+<h1>END</h1>
+
+
+
 	<div class="w-full pt-3">	
 		<pre class="flex flex-col flex-wrap">
 		<div class="language-tag gray900 text-gray200">HTML</div>		
@@ -322,6 +363,31 @@
 	</div>	
 </div>
 <hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="w-full pt-3 pb-3">		
 	<p class="w-full flex justify-center">
 	<span class="w-full ">.btn-info</span><button onclick="copy(event)" class="border-none gray50 p-1 rounded-md cursor-pointer flex flex-col justify-center"><i data-lucide="copy" class="text-bluegray600" ></i></button></p>
