@@ -113,21 +113,19 @@ for( category in menu ){
 }
 
 var menuTag = document.getElementById("menu");
-
 menuTag.innerHTML = menuText
-
 menuItems = Array.from(menuTag.querySelectorAll("[data-link]")); 
-
 menuItems.forEach((item)=>{
 	item.addEventListener("click",()=>{
-		const link = item.getAttribute("data-link");
-		root.classList.add("hidden");
-		location.href = "#/"+link;
+		const link = "#/"+item.getAttribute("data-link");
+		if( location.hash != link ){			
+			root.classList.add("hidden");
+			location.href = link	
+		}
 	})
 });
 
-
-	// Declare root html element
+// Declare root html element
 var root = document.getElementById("root");
 
 // Declare router here
@@ -155,12 +153,13 @@ const ajax = function( url , fn ){
 		}).then((response)=>{
 			fn(response)		
 		});
+		console.log("fetch...");
 }
 
 router.addRoute("/element/:name(string)",{
 	controller:function( params ){
 		
-		const url = "/ajax/element/"+params.name+"/page.htm";		
+		const url = "/ajax/element/"+params.name+"/page.htm";
 		root.innerHTML = `<div class="flex flex-colw-full"><span>Load....</span></div>`;
 		ajax(url, ( response )=>{				
 			var html = `<h2 class='capitalize text-deeppurple900' >&nbsp;${params.name}</h2>`
@@ -173,10 +172,8 @@ router.addRoute("/element/:name(string)",{
 				root.classList.add("animate__animated","animate__fadeIn");
 				lucide.createIcons();
 			},0);
-			
 
-		})
-		
+		})		
 	}
 });
 
