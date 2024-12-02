@@ -161,8 +161,34 @@ router.addRoute("/element/:name(string)",{
 		
 		const url = "/ajax/element/"+params.name+"/page.htm";
 		root.innerHTML = `<div class="flex flex-colw-full"><span>Load....</span></div>`;
-		ajax(url, ( response )=>{							
-			const html = response;
+		const options = ["normal","info","warning","success","danger"];
+
+		const cssButtonNormal = `gray50 outline-none mb-1 border-gray400 border border-solid p-2 text-center text-bluegray900 rounded font-ligh cursor-pointer
+			focus:border-gray500 				
+			focus:shadow-around-gray900
+			hover:border-gray500
+			active:border-gray500 
+			active:gray300
+			transition-duration-200 transition-property-all transition-timing-ease
+			h-10`
+		const cssHr = `w-full border border-top-solid border-deeppurple300 h-0`;	
+
+		const cssButtonIcon = `flex flex-row flex-wrap justify-center items-center`;	
+
+		ajax(url, ( response )=>{													
+			const html = response.replaceAll("($title)", params.name ).
+			replaceAll("($options)",function(){
+				let str = "";
+				for( var i = 0 ; i < options.length ; i++ ){
+					str += `<option value='${options[i]}' >${options[i]}</option>`	
+				}
+				return str;
+			}).replaceAll("($cssButtonNormal)",cssButtonNormal)
+			.replaceAll("($cssButtonIcon)",cssButtonIcon)
+			.replaceAll("($cssHr)",cssHr);
+
+			
+
 			setTimeout(()=>{
 				root.innerHTML = html;
 				hljs.highlightAll();
@@ -233,6 +259,7 @@ function changeStyles( event ){
 <script>
 	var drawer = new ppDrawer("main")
 </script>-->
+
 
 </body>
 </html>
