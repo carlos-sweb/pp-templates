@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>ppTemplates</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/node_modules/@fontsource-variable/jetbrains-mono/index.css">
+	<link rel="stylesheet" href="/node_modules/@fontsource-variable/outfit/wght.css">
+
+	<link rel="stylesheet" href="/node_modules/@fontsource/ubuntu/index.css">
+	<link rel="stylesheet" href="/node_modules/@fontsource/ubuntu-condensed/index.css">
+	<link rel="stylesheet" href="/node_modules/@fontsource/ubuntu-mono/index.css">
+	<link rel="stylesheet" href="/node_modules/@fontsource/noto-serif-ahom/index.css">
+	
+
+	<link rel="stylesheet" href="/node_modules/animate.css/animate.min.css">
+	<link rel="stylesheet" href="/node_modules/normalize.css/normalize.css">
+	<link rel="stylesheet" href="/node_modules/highlight.js/lib/core.js">
+	<link rel="stylesheet" href="/node_modules/highlight.js/styles/atom-one-dark-reasonable.min.css">
+	<link rel="stylesheet" href="pp-css/dist/master.css">
+
+
+<style>
+	pre {
+            position: relative;
+            padding: 0px;                       
+            margin: 0px;
+        }
+        
+        .language-tag {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 6px 10px;
+            font-size: 14px;                        
+            border-radius: 0 6px 0 6px;
+            font-weight:bold;
+        }
+</style>
+	<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pp-drawer.js@1.0.6/pp-drawer.min.css">-->
+
+	<style>
+	*{
+		user-select: none;
+		-ms-user-select: none;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+	}	
+	body{
+		font-family: 'Ubuntu Mono', sans-serif;
+	  /* font-family: 'Noto Serif Ahom', serif;	  */
+	  /* font-family: 'Outfit Variable', sans-serif; */
+	  /* font-family: "JetBrains Mono Variable", serif;	  	  */
+	}
+	</style>	
+</head>
+<body>
+
+<div style="display:grid;grid-template-columns:repeat(24, 1fr);">
+	<div style="grid-area:1 / 1 / 1 / 7; " id="menu" class="p-2 gray300 border-right-solid border border-right-bluegray100" ></div>
+	<div id="root" style="grid-area:1 / 7 / 1 / -1;" class="p-3"></div>
+</div>
+
+<script src="/node_modules/lucide/dist/umd/lucide.min.js" ></script>
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
+<script src="/node_modules/pp-is/dist/pp-is.min.js" ></script>
+<script src="/node_modules/pp-router.js/pp-router.min.js"></script>
+<script src="/node_modules/pp-events/dist/pp-events.min.js"></script>
+<script src="/node_modules/pp-validate/pp-validate.min.js"></script>
+<script src="/node_modules/pp-model.js/pp-model.min.js"></script>
+
+<script>
+	
+const menu = {
+	"element":["block","box","button","content","delete","icons","image","tag","title"],
+	"components":["card","dropdown","menu","message","modal","navbar","pagination"],
+	"form":["general","input","textarea","select","checkbox","radio","file"],
+	"layout":["container","hero","section","level","media-object","footer"], 
+	"pages":["login","register"]
+};
+
+let menuText = `
+
+<!--<div>
+<button onclick="drawer.open()" >Open Drawer</button>
+<br>
+<br>
+</div>-->
+  <!--<i data-lucide="volume-2" class="text-red500"></i>
+  <i data-lucide="x"></i>
+  <i data-lucide="menu"></i>-->
+
+
+<div class="w-full flex ">
+<input placeholder="Search" autocomplete="off" name="username" class="w-full outline-none appearance-none rounded border-solid border-gray400 border border-solid h-7 pt-1 pb-1 pl-2 pr-2 focus:border focus:border-deeppurple400 focus:shadow-around-deeppurple300 text-bluegray900 transition-duration-200 transition-property-all transition-timing-ease" type="text"  ></div>`
+
+let stringClass1 = "flex p-4 gray300 font-bold text-deeppurple900 capitalize cursor-normal";
+
+let stringClass2 = "flex p-3 text-bluegray900 capitalize cursor-pointer";
+
+for( category in menu ){		
+	menuText += `<div class="${stringClass1}" >${category}</div>`
+	menuText +=	`<div class='gray100 mb-4 shadow rounded-xl' >`;
+	menuLength = menu[category].length;
+	for( var i = 0 ; i < menuLength ; i++ ){	
+		let tempStringClass2 = stringClass2;
+		if( i <= (menuLength-1)  ){ 
+			tempStringClass2 += " border border-bottom-solid border-bottom-gray300"
+		}
+
+		menuText += `<div data-link="${category}/${menu[category].at(i)}" class="${tempStringClass2}" >&nbsp;${menu[category].at(i)}</div>`
+	}
+	menuText +=	`</div>`;
+}
+
+var menuTag = document.getElementById("menu");
+menuTag.innerHTML = menuText
+menuItems = Array.from(menuTag.querySelectorAll("[data-link]")); 
+menuItems.forEach((item)=>{
+	item.addEventListener("click",()=>{
+		const link = "#/"+item.getAttribute("data-link");
+		if( location.hash != link ){			
+			root.classList.add("hidden");
+			location.href = link	
+		}
+	})
+});
+
+// Declare root html element
+var root = document.getElementById("root");
+
+// Declare router here
+var router = new ppRouter(
+    // How to use it ?
+    {
+    "/":{
+        controller:function(){
+            root.innerHTML = `<h1>Home</h1>`;
+        }
+    }
+    }
+);
+
+
+const options  = {
+	headers: {
+    		"Content-Type": "text/plain"
+  		}
+}
+
+const ajax = function( url , fn ){
+		fetch(url,options).then((response)=>{
+			return response.text()
+		}).then((response)=>{
+			fn(response)		
+		});
+		console.log("fetch...");
+}
+
+router.addRoute("/element/:name(string)",{
+	controller:function( params ){
+		
+		const url = "/ajax/element/"+params.name+"/page.htm";
+		root.innerHTML = `<div class="flex flex-colw-full"><span>Load....</span></div>`;
+		const options = ["normal","info","warning","success","danger"];
+
+		const cssButtonNormal = `gray50 outline-none mb-1 border-gray400 border border-solid p-2 text-center text-bluegray900 rounded font-ligh cursor-pointer
+			focus:border-gray500 				
+			focus:shadow-around-gray900
+			hover:border-gray500
+			active:border-gray500 
+			active:gray300
+			transition-duration-200 transition-property-all transition-timing-ease
+			h-10`
+		const cssHr = `w-full border border-top-solid border-deeppurple300 h-0`;	
+
+		const cssButtonIcon = `flex flex-row flex-wrap justify-center items-center`;	
+
+		ajax(url, ( response )=>{													
+			const html = response.replaceAll("($title)", params.name ).
+			replaceAll("($options)",function(){
+				let str = "";
+				for( var i = 0 ; i < options.length ; i++ ){
+					str += `<option value='${options[i]}' >${options[i]}</option>`	
+				}
+				return str;
+			}).replaceAll("($cssButtonNormal)",cssButtonNormal)
+			.replaceAll("($cssButtonIcon)",cssButtonIcon)
+			.replaceAll("($cssHr)",cssHr);
+
+			
+
+			setTimeout(()=>{
+				root.innerHTML = html;
+				hljs.highlightAll();
+				root.classList.remove("hidden");
+				root.classList.add("animate__animated","animate__fadeIn");
+				lucide.createIcons();
+			},0);
+
+		})		
+	}
+});
+
+router.addRoute("/components/:name(string)",{
+	controller:function( params ){
+		root.innerHTML = `<h1>Components -> ${params.name}</h1>`;
+	}
+});
+
+router.addRoute("/form/:name(string)",{
+	controller:function( params ){
+		root.innerHTML = `<h1>Form -> ${params.name}</h1>`;
+	}
+});
+router.addRoute("/layout/:name(string)",{
+	controller:function( params ){
+		root.innerHTML = `<h1>Form -> ${params.name}</h1>`;
+	}
+});
+
+
+// If you want to default redirect
+router.redirect("/");
+
+// If you want to default Function for noFound state
+
+router.noFound = function( location ){
+    // Put you code here
+}
+
+//getting enjoy you router
+router.start();
+	// if you want
+	//router.start("/my-url-base");
+	lucide.createIcons();	
+
+
+function copy( event ){
+	const text = event.currentTarget.parentElement.nextElementSibling.
+		innerText;
+	navigator.clipboard.writeText( text );
+}
+
+
+function changeStyles( event ){
+	const values = event.currentTarget.value;
+	console.log( values );
+	console.log("Change ..... Style");
+}
+
+
+</script>
+
+
+<!--<div drawer-id="main" class="pp-drawer hidden_drawer drawer-shadow"><h1>hola</h1></div>
+<div drawer-id="main" class="pp-drawer-scrim hidden"></div>-->
+
+<!--<script src="https://cdn.jsdelivr.net/npm/pp-drawer.js@1.0.6/pp-drawer.min.js" ></script>
+<script>
+	var drawer = new ppDrawer("main")
+</script>-->
+
+<script id="template-button" type="text/pp-template" >
+	
+	<h1>($hola)</h1>		
+
+</script>
+
+</body>
+</html>

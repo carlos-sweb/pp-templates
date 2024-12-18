@@ -70,12 +70,23 @@
 <script src="/node_modules/pp-model.js/pp-model.min.js"></script>
 
 <script>
+
+const menuItemHTML 	= ()=>"<div>Hello</div>";
+const titleHTML=(title="")=>`<p class="text-3xl font-bold text-deeppurple900 capitalize pl-2">${title}</p>`;
+const terminalHTML=(link="")=>`<div class="p-4 pb-6 bluegray900 rounded" >	
+	<p class="m-0 p-0 text-gray500 block flex justify-end"><i onclick="copy(event)" data-lucide="copy" class="w-5 right cursor-pointer" ></i></p>
+	<p class="m-0 p-0">
+		<span class="text-gray50"><</span><span class="text-red400">link </span><span class="text-amber400">rel</span><span class="text-gray50">=</span><span class="text-green500">"stylesheet" </span><span class="text-amber400">href</span><span class="text-gray50">=</span><span class="text-green500">"${link}"</span><span class="text-gray50">/></span>
+	</p>	
+</div>`;
+
 	
 const menu = {
 	"element":["block","box","button","content","delete","icons","image","tag","title"],
 	"components":["card","dropdown","menu","message","modal","navbar","pagination"],
 	"form":["general","input","textarea","select","checkbox","radio","file"],
-	"layout":["container","hero","section","level","media-object","footer"]
+	"layout":["container","hero","section","level","media-object","footer"], 
+	"pages":["login","register"]
 };
 
 let menuText = `
@@ -175,9 +186,14 @@ router.addRoute("/element/:name(string)",{
 
 		const cssButtonIcon = `flex flex-row flex-wrap justify-center items-center`;	
 
-		ajax(url, ( response )=>{													
-			const html = response.replaceAll("($title)", params.name ).
-			replaceAll("($options)",function(){
+		ajax(url, ( response )=>{
+			let html = "";
+			html += titleHTML(params.name);
+			html += terminalHTML(
+				"/node_modules/pp-templates/element/"+params.name+".all.min.css"
+			);
+
+			html += response.replaceAll("($options)",function(){
 				let str = "";
 				for( var i = 0 ; i < options.length ; i++ ){
 					str += `<option value='${options[i]}' >${options[i]}</option>`	
@@ -260,11 +276,7 @@ function changeStyles( event ){
 	var drawer = new ppDrawer("main")
 </script>-->
 
-<script id="template-button" type="text/pp-template" >
-	
-	<h1>($hola)</h1>		
 
-</script>
 
 </body>
 </html>
