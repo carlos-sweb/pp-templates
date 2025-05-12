@@ -1,10 +1,15 @@
-<!--https://originui.com/buttons-->
-<!-- https://daisyui.com/components/button/ -->
-<!-- <p class="text-1xl text-gray600 m-0 p-0">&lt;!-- add this file --&gt;</p>	 -->
-<div class="w-full pt-3 pb-3">	
+
+	<div class="w-full pt-3 pb-3">	
 	<div class="w-full pt-3 pb-3">
 		<!--START SELECT TO STYLES-->
+		<label for="">Style</label>
 		<select class="gray100 w-40 flex pl-3 pr-3 pt-2 pb-2 border border-solid border-gray300 rounded" onchange="changeStyles( event )" >
+			($styles)
+		</select>
+		<!--END SELECT TO STYLES-->
+		<!--START SELECT TO STYLES-->
+		<label for="">Variante</label>
+		<select class="gray100 w-40 flex pl-3 pr-3 pt-2 pb-2 border border-solid border-gray300 rounded" onchange="changeVariante( event )" >
 			($options)
 		</select>
 		<!--END SELECT TO STYLES-->
@@ -15,8 +20,8 @@
 		<p class="text-2xl font-bold text-deeppurple900">&nbsp;Classic</p>		
 	<!--CLASSIC BUTTON -->	
 		<div class="w-full "><p class="text-base font-bold text-green800">&nbsp;Simple&nbsp;</p></div>
-		<div class="w-full flex flex-row flex-wrap justify-start gap-3">			
-			<button class="($cssButtonNormal)">&nbsp;Normal&nbsp;</button>
+		<div data-variante="normal" class="w-full flex flex-row flex-wrap justify-start gap-3">			
+			<button  class="($cssButtonNormal)">&nbsp;Normal&nbsp;</button>
 			<button class="($cssButtonNormal) ($cssButtonIcon)">&nbsp;
 				<i data-lucide="github" class="w-5" ></i>&nbsp;<span>Github</span>&nbsp;
 			</button>

@@ -1742,6 +1742,13 @@ postcss-value-parser@^4.1.0, postcss-value-parser@^4.2.0:
     picocolors "^1.1.1"
     source-map-js "^1.2.1"
 
+pp-element@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/pp-element/-/pp-element-1.0.1.tgz"
+  integrity sha512-BQBtMH1QkX13w/gFEIRNTLcOIRKNeRm96I7G65yZm/0KMceeXm7cJloLqZq0Tp+VStE5iDRToei52oGczyA2MA==
+  dependencies:
+    pp-is "^1.0.2"
+
 pp-events@^1.0.9, pp-events@^1.2.6:
   version "1.2.6"
   resolved "https://registry.npmjs.org/pp-events/-/pp-events-1.2.6.tgz"
@@ -1749,7 +1756,7 @@ pp-events@^1.0.9, pp-events@^1.2.6:
   dependencies:
     pp-is "^1.2.1"
 
-pp-is@^1.0.0, pp-is@^1.0.1, pp-is@^1.0.4, pp-is@^1.2.1, pp-is@^1.2.3:
+pp-is@^1.0.0, pp-is@^1.0.1, pp-is@^1.0.2, pp-is@^1.0.4, pp-is@^1.2.1, pp-is@^1.2.3:
   version "1.2.3"
   resolved "https://registry.npmjs.org/pp-is/-/pp-is-1.2.3.tgz"
   integrity sha512-2Qp1z6PUlCMrsyUXIokki8/QxIpNNSwPh5n4BG8IigWqSB7dYS4y+DadFoC6JCGvGC/QHX2MEisf6G30J04hwA==

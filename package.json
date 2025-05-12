@@ -12,6 +12,7 @@
     "lucide": "^0.461.0",
     "lucide-static": "^0.461.0",
     "normalize.css": "^8.0.1",
+    "pp-element": "^1.0.1",
     "pp-events": "^1.2.6",
     "pp-is": "^1.2.3",
     "pp-model.js": "^1.2.7",

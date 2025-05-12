@@ -206,6 +206,7 @@ var __webpack_exports__ = {};
 
 
 
+
 console.log( (0,pp_is__WEBPACK_IMPORTED_MODULE_0__.isString)("hola a todos"));
 })();
 

@@ -57,7 +57,7 @@
 <body>
 
 <div style="display:grid;grid-template-columns:repeat(24, 1fr);">
-	<div style="grid-area:1 / 1 / 1 / 7; " id="menu" class="p-2 gray300 border-right-solid border border-right-bluegray100" ></div>
+	<div style="grid-area:1 / 1 / 1 / 7;" id="menu" class="p-2 gray300 border-right-solid border border-right-bluegray100" ></div>
 	<div id="root" style="grid-area:1 / 7 / 1 / -1;" class="p-3"></div>
 </div>
 
@@ -69,9 +69,11 @@
 <script src="/node_modules/pp-validate/pp-validate.min.js"></script>
 <script src="/node_modules/pp-model.js/pp-model.min.js"></script>
 
+<script src="/node_modules/pp-element/pp-element.min.js"></script>
+
 <script>
 
-const menuItemHTML 	= ()=>"<div>Hello</div>";
+
 const titleHTML=(title="")=>`<p class="text-3xl font-bold text-deeppurple900 capitalize pl-2">${title}</p>`;
 const terminalHTML=(link="")=>`<div class="p-4 pb-6 bluegray900 rounded" >	
 	<p class="m-0 p-0 text-gray500 block flex justify-end"><i onclick="copy(event)" data-lucide="copy" class="w-5 right cursor-pointer" ></i></p>
@@ -101,8 +103,11 @@ let menuText = `
   <i data-lucide="menu"></i>-->
 
 
-<div class="w-full flex ">
-<input placeholder="Search" autocomplete="off" name="username" class="w-full outline-none appearance-none rounded border-solid border-gray400 border border-solid h-7 pt-1 pb-1 pl-2 pr-2 focus:border focus:border-deeppurple400 focus:shadow-around-deeppurple300 text-bluegray900 transition-duration-200 transition-property-all transition-timing-ease" type="text"  ></div>`
+<div class="w-full flex flex-col flex-wrap">
+<p class="font-bold text-center" style="font-size:36px;background: -webkit-linear-gradient(45deg, #09009f, #00ff95 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;">pP Templates</p>
+<input placeholder="Search" autocomplete="off" name="username" class="outline-none appearance-none rounded border-solid border-gray400 border border-solid h-7 pt-1 pb-1 pl-2 pr-2 focus:border focus:border-deeppurple400 focus:shadow-around-deeppurple300 text-bluegray900 transition-duration-200 transition-property-all transition-timing-ease" type="text"  ></div>`
 
 let stringClass1 = "flex p-4 gray300 font-bold text-deeppurple900 capitalize cursor-normal";
 
@@ -173,6 +178,13 @@ router.addRoute("/element/:name(string)",{
 		const url = "/ajax/element/"+params.name+"/page.htm";
 		root.innerHTML = `<div class="flex flex-colw-full"><span>Load....</span></div>`;
 		const options = ["normal","info","warning","success","danger"];
+		const styles = ["classic","Slim","Rounded","Rounded Slim"];
+
+		const cssButtonNormalClassName = [
+			"gray50",
+			"outline-none",
+			"mb-1"
+		];
 
 		const cssButtonNormal = `gray50 outline-none mb-1 border-gray400 border border-solid p-2 text-center text-bluegray900 rounded font-ligh cursor-pointer
 			focus:border-gray500 				
@@ -182,22 +194,32 @@ router.addRoute("/element/:name(string)",{
 			active:gray300
 			transition-duration-200 transition-property-all transition-timing-ease
 			h-10`
+	
 		const cssHr = `w-full border border-top-solid border-deeppurple300 h-0`;	
 
 		const cssButtonIcon = `flex flex-row flex-wrap justify-center items-center`;	
 
 		ajax(url, ( response )=>{
 			let html = "";
+			html += String(`<button class="($cssButtonNormal) w-10"><i data-lucide="menu" class="w-5" ></i></button>`).replaceAll("($cssButtonNormal)",cssButtonNormal)
 			html += titleHTML(params.name);
 			html += terminalHTML(
 				"/node_modules/pp-templates/element/"+params.name+".all.min.css"
 			);
 
+		
+
 			html += response.replaceAll("($options)",function(){
 				let str = "";
-				for( var i = 0 ; i < options.length ; i++ ){
-					str += `<option value='${options[i]}' >${options[i]}</option>`	
-				}
+				for( const option of options ){
+					str += `<option value='${option}' >${option}</option>`	
+				}				
+				return str;
+			}).replaceAll("($styles)",function(){
+				let str = "";
+				for( const style of styles ){
+					str += `<option value='${style}' >${style}</option>`	
+				}				
 				return str;
 			}).replaceAll("($cssButtonNormal)",cssButtonNormal)
 			.replaceAll("($cssButtonIcon)",cssButtonIcon)
@@ -261,7 +283,26 @@ function copy( event ){
 function changeStyles( event ){
 	const values = event.currentTarget.value;
 	console.log( values );
+	console.log("Change ..... Style");	
+}
+
+function changeVariante( event ){
+	const values = event.currentTarget.value;
+	console.log( values );
 	console.log("Change ..... Style");
+
+	const btn = ppElement("div[data-variante=normal] >button");
+
+	btn.removeClass(["gray50","border-gray400"]);	
+	btn.addClass(["yellow800","border-yellow400"]);	
+		
+
+
+	
+	console.log( btn);
+
+
+
 }
 
 
